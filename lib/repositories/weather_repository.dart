@@ -6,7 +6,7 @@ import 'package:weather/models/weather.dart';
 class WeatherRepository {
   final String _apiKey = "ae72b78a3620648f64652eaacc760dbe";
 
-  Future<List<WeatherCity>> fetch({required String city}) async {
+  Future<WeatherCity> fetch({required String city}) async {
     Uri url = Uri.parse(
       "http://api.openweathermap.org/data/2.5/"
       "weather?q=$city&lang=ru&APPID=$_apiKey",
@@ -16,9 +16,7 @@ class WeatherRepository {
     if (response.statusCode == 200) {
       final resultJson = jsonDecode(response.body);
 
-      final List<WeatherCity> result = [];
-      result.add(WeatherCity.fromJson(resultJson));
-      return result;
+      return WeatherCity.fromJson(resultJson);
     } else {
       return throw Exception("Ошибка получения данных");
     }
