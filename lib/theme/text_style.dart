@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class WalletTextStyle {
+class WeatherTextStyle {
   static TextStyle title18(Color color) {
     return TextStyle(
       fontSize: 18,
@@ -18,7 +18,7 @@ class WalletTextStyle {
 
   static TextStyle title16bold(Color color) {
     return TextStyle(
-      fontSize: 17,
+      fontSize: 18,
       fontWeight: FontWeight.w500,
       color: color,
     );
