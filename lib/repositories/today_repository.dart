@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:weather/models/weatherCity.dart';
 
-class WeatherRepository {
+class TodayRepository {
   final String _apiKey = "ae72b78a3620648f64652eaacc760dbe";
 
   Future fetch({required String city}) async {

@@ -25,7 +25,7 @@ class WeatherTextStyle {
     );
   }
 
-  static TextStyle title30(Color color) {
+  static TextStyle title30bold(Color color) {
     return TextStyle(
       fontSize: 30,
       fontWeight: FontWeight.w500,

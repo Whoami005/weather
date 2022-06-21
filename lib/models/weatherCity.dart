@@ -1,10 +1,12 @@
 import 'package:weather/models/clouds.dart';
+import 'package:weather/models/coord.dart';
 import 'package:weather/models/main_model.dart';
 import 'package:weather/models/system.dart';
 import 'package:weather/models/weather.dart';
 import 'package:weather/models/wind.dart';
 
 class WeatherCity {
+  Coordinates? coord;
   List<Weather>? weather;
   Main? main;
   num? visibility;

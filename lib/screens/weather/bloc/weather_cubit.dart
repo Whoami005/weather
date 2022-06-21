@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/models/weatherCity.dart';
-import 'package:weather/repositories/weather_repository.dart';
+import 'package:weather/repositories/today_repository.dart';
 
 part 'weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  final WeatherRepository _repository;
+  final TodayRepository _repository;
 
-  WeatherCubit({required WeatherRepository repository})
+  WeatherCubit({required TodayRepository repository})
       : _repository = repository,
         super(const WeatherState(status: WeatherStatus.initial));
 

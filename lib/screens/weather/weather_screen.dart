@@ -1,9 +1,12 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/repositories/weather_repository.dart';
+import 'package:weather/repositories/today_repository.dart';
+import 'package:weather/screens/days_info/days_info_screen.dart';
 import 'package:weather/screens/weather/bloc/weather_cubit.dart';
 import 'package:weather/screens/weather/widgets/custom_icon.dart';
 import 'package:weather/screens/weather/widgets/info_card.dart';
+import 'package:weather/theme/color.dart';
 import 'package:weather/theme/text_style.dart';
 import 'package:weather/widgets/custom_error_dialog.dart';
 
@@ -19,7 +22,7 @@ class WeatherScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) =>
-          WeatherCubit(repository: WeatherRepository()),
+          WeatherCubit(repository: TodayRepository()),
       child: Scaffold(
         body: BlocConsumer<WeatherCubit, WeatherState>(
           listener: (weatherContext, weatherState) {
@@ -44,7 +47,16 @@ class WeatherScreen extends StatelessWidget {
                   actions: [
                     IconButton(
                       iconSize: 60,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DaysInfoScreen(
+                              city: city,
+                            ),
+                          ),
+                        );
+                      },
                       icon: Image.asset("assets/sunny.png"),
                       splashRadius: 30,
                     )
@@ -65,7 +77,9 @@ class WeatherScreen extends StatelessWidget {
                           const SizedBox(height: 10),
                           Text(
                             state.weatherCity!.weather![0].main!,
-                            style: WeatherTextStyle.title30(Colors.black),
+                            style: WeatherTextStyle.title30bold(
+                              WeatherColors.black,
+                            ),
                           ),
                           const SizedBox(height: 20),
                           Card(
@@ -73,13 +87,19 @@ class WeatherScreen extends StatelessWidget {
                               children: [
                                 Image.network(
                                   "http://openweathermap.org/img/wn/"
-                                  "${state.weatherCity!.weather![0].icon!}@2x.png",
+                                  "${state.weatherCity!.weather![0].icon!}"
+                                  "@2x.png",
                                 ),
                                 const SizedBox(width: 10),
-                                Text(
-                                  state.weatherCity!.weather![0].description!,
-                                  style: WeatherTextStyle.title25bold(
-                                    Colors.black54,
+                                SizedBox(
+                                  width: 200,
+                                  child: AutoSizeText(
+                                    state.weatherCity!.weather![0].description!,
+                                    style: WeatherTextStyle.title25bold(
+                                      WeatherColors.black54,
+                                    ),
+                                    maxLines: 2,
+                                    minFontSize: 14,
                                   ),
                                 ),
                               ],
@@ -109,7 +129,7 @@ class WeatherScreen extends StatelessWidget {
                             state: state,
                             image: "assets/ice.png",
                             text: "Видимость: "
-                                "${state.weatherCity!.visibility!} km",
+                                "${state.weatherCity!.visibility} km",
                             textTwo: "Облачность: "
                                 "${state.weatherCity!.clouds!.all}%",
                             textThree: "Влажность: "

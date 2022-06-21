@@ -22,7 +22,7 @@ class CustomErrorDialog {
                 children: [
                   const Icon(
                     Icons.sms_failed,
-                    color: Colors.red,
+                    color: WeatherColors.red,
                   ),
                   const SizedBox(width: 5),
                   Text(
@@ -34,7 +34,7 @@ class CustomErrorDialog {
               const SizedBox(height: 10),
               Text(
                 errorMessage,
-                style: WeatherTextStyle.title16bold(Colors.red),
+                style: WeatherTextStyle.title16bold(WeatherColors.red),
               ),
             ],
           ),

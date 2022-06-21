@@ -44,10 +44,12 @@ class HomeScreen extends StatelessWidget {
                           decoration: InputDecoration(
                               hintText: "Махачкала",
                               hintStyle: WeatherTextStyle.title18bold(
-                                Colors.black87,
+                                WeatherColors.black87,
                               ),
                               border: InputBorder.none),
-                          style: WeatherTextStyle.title18bold(Colors.black87),
+                          style: WeatherTextStyle.title18bold(
+                            WeatherColors.black87,
+                          ),
                           controller: state.cityController,
                         ),
                       ),

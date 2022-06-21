@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/repositories/weather_repository.dart';
+import 'package:weather/repositories/days_info_repository.dart';
+import 'package:weather/repositories/today_repository.dart';
 import 'package:weather/screens/home/bloc/home_cubit.dart';
 import 'package:weather/screens/home/home_screen.dart';
 import 'package:weather/theme/theme.dart';
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-          create: (BuildContext context) => WeatherRepository(),
+          create: (BuildContext context) => TodayRepository(),
+        ),
+        RepositoryProvider(
+          create: (BuildContext context) => DaysInfoRepository(),
         ),
       ],
       child: MultiBlocProvider(
