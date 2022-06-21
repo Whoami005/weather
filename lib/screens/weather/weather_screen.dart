@@ -106,7 +106,6 @@ class WeatherScreen extends StatelessWidget {
                             ),
                           ),
                           InfoCard(
-                            state: state,
                             image: "assets/very_sunny.png",
                             text: "Температура: "
                                 "${state.weatherCity!.main!.temp}",
@@ -116,7 +115,6 @@ class WeatherScreen extends StatelessWidget {
                                 "${state.weatherCity!.main!.tempMin}",
                           ),
                           InfoCard(
-                            state: state,
                             image: "assets/wind.png",
                             text: "Скорость ветра: "
                                 "${state.weatherCity!.wind!.speed}",
@@ -126,7 +124,6 @@ class WeatherScreen extends StatelessWidget {
                                 "${state.weatherCity!.wind!.deg}°",
                           ),
                           InfoCard(
-                            state: state,
                             image: "assets/ice.png",
                             text: "Видимость: "
                                 "${state.weatherCity!.visibility} km",

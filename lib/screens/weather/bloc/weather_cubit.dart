@@ -13,8 +13,8 @@ class WeatherCubit extends Cubit<WeatherState> {
         super(const WeatherState(status: WeatherStatus.initial));
 
   Future getWeather({required String city}) async {
-    ConnectivityResult result = await Connectivity().checkConnectivity();
-    if (result != ConnectivityResult.none){
+    ConnectivityResult internet = await Connectivity().checkConnectivity();
+    if (internet != ConnectivityResult.none){
       try {
         emit(state.copyWith(status: WeatherStatus.loading));
 

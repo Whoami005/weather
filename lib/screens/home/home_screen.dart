@@ -35,17 +35,21 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                                color: WeatherColors.light, width: 5)),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: WeatherColors.light,
+                            width: 5,
+                          ),
+                        ),
                         child: TextField(
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
-                              hintText: "Махачкала",
-                              hintStyle: WeatherTextStyle.title18bold(
-                                WeatherColors.black87,
-                              ),
-                              border: InputBorder.none),
+                            hintText: "Махачкала",
+                            hintStyle: WeatherTextStyle.title18bold(
+                              WeatherColors.black87,
+                            ),
+                            border: InputBorder.none,
+                          ),
                           style: WeatherTextStyle.title18bold(
                             WeatherColors.black87,
                           ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather/screens/weather/bloc/weather_cubit.dart';
 import 'package:weather/theme/text_style.dart';
 
 class InfoCard extends StatelessWidget {
-  final WeatherState state;
   final String? image;
   final String? text;
   final String? textTwo;
@@ -11,7 +9,6 @@ class InfoCard extends StatelessWidget {
 
   const InfoCard({
     Key? key,
-    required this.state,
     this.image,
     this.text,
     this.textTwo,
