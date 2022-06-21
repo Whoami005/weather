@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/repositories/days_info_repository.dart';
 import 'package:weather/screens/days_info/bloc/days_info_cubit.dart';
+import 'package:weather/screens/days_info/widgets/app_bar.dart';
+import 'package:weather/screens/days_info/widgets/custom_text.dart';
 import 'package:weather/theme/color.dart';
 import 'package:weather/theme/text_style.dart';
 
@@ -13,10 +15,7 @@ class DaysInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Weather"),
-        centerTitle: true,
-      ),
+      appBar: const DaysInfoAppBar(),
       body: BlocProvider(
         create: (BuildContext context) => DaysInfoCubit(
           repository: DaysInfoRepository(),
@@ -35,7 +34,6 @@ class DaysInfoScreen extends StatelessWidget {
                         child: SizedBox(
                           width: double.infinity,
                           child: Row(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 width: 180,
@@ -55,40 +53,25 @@ class DaysInfoScreen extends StatelessWidget {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  Text(
-                                    "Температура: "
-                                    "${state.info![index].main!.temp}",
-                                    style: WeatherTextStyle.title16bold(
-                                      WeatherColors.black,
-                                    ),
+                                  CustomText(
+                                    text: "Температура: "
+                                        "${state.info![index].main!.temp}",
                                   ),
-                                  Text(
-                                    "Скорость ветра: "
-                                    "${state.info![index].wind!.speed}",
-                                    style: WeatherTextStyle.title16bold(
-                                      WeatherColors.black,
-                                    ),
+                                  CustomText(
+                                    text: "Скорость ветра: "
+                                        "${state.info![index].wind!.speed}",
                                   ),
-                                  Text(
-                                    "Видимость: "
-                                    "${state.info![index].visibility}",
-                                    style: WeatherTextStyle.title16bold(
-                                      WeatherColors.black,
-                                    ),
+                                  CustomText(
+                                    text: "Видимость: "
+                                        "${state.info![index].visibility}",
                                   ),
-                                  Text(
-                                    "Облачность: "
-                                    "${state.info![index].clouds!.all}%",
-                                    style: WeatherTextStyle.title16bold(
-                                      WeatherColors.black,
-                                    ),
+                                  CustomText(
+                                    text: "Облачность: "
+                                        "${state.info![index].clouds!.all}%",
                                   ),
-                                  Text(
-                                    "Влажность: "
-                                    "${state.info![index].main!.humidity}%",
-                                    style: WeatherTextStyle.title16bold(
-                                      WeatherColors.black,
-                                    ),
+                                  CustomText(
+                                    text: "Влажность: "
+                                        "${state.info![index].main!.humidity}%",
                                   ),
                                 ],
                               ),
@@ -98,9 +81,7 @@ class DaysInfoScreen extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return const Divider(
-                        thickness: 3,
-                      );
+                      return const Divider(thickness: 3);
                     },
                     itemCount: state.info!.length),
               );
