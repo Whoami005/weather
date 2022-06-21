@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/repositories/weather_repository.dart';
+import 'package:weather/screens/home/bloc/home_cubit.dart';
 import 'package:weather/screens/home/home_screen.dart';
-import 'package:weather/screens/weather/bloc/weather_cubit.dart';
 import 'package:weather/theme/theme.dart';
 
 void main() {
@@ -14,15 +14,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => WeatherRepository(),
-      child: BlocProvider(
-        create: (BuildContext context) =>
-            WeatherCubit(repository: WeatherRepository()),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (BuildContext context) => WeatherRepository(),
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (BuildContext context) => HomeCubit())
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: lightTheme,
-          home: HomeScreen(),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const HomeScreen(),
+          },
         ),
       ),
     );

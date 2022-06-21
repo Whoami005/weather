@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class WeatherTextStyle {
-  static TextStyle title18(Color color) {
+  static TextStyle title25bold(Color color) {
     return TextStyle(
-      fontSize: 18,
+      fontSize: 25,
+      fontWeight: FontWeight.w500,
       color: color,
     );
   }
 
-  static TextStyle title16(Color color) {
+  static TextStyle title16bold(Color color) {
     return TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w400,
@@ -16,7 +17,7 @@ class WeatherTextStyle {
     );
   }
 
-  static TextStyle title16bold(Color color) {
+  static TextStyle title18bold(Color color) {
     return TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w500,
@@ -27,6 +28,7 @@ class WeatherTextStyle {
   static TextStyle title30(Color color) {
     return TextStyle(
       fontSize: 30,
+      fontWeight: FontWeight.w500,
       color: color,
     );
   }

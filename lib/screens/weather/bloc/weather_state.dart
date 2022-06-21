@@ -9,27 +9,32 @@ enum WeatherStatus {
 
 class WeatherState {
   final WeatherStatus _status;
-  final WeatherCity? _weather;
+  final WeatherCity? _weatherCity;
+  final String? _errorMessage;
 
   const WeatherState({
     required WeatherStatus status,
-    WeatherCity? weather,
-    TextEditingController? cityController,
+    WeatherCity? weatherCity,
+    String? errorMessage,
   })  : _status = status,
-        _weather = weather;
+        _weatherCity = weatherCity,
+        _errorMessage = errorMessage;
 
-  WeatherCity? get weather => _weather;
+  String? get errorMessage => _errorMessage;
+
+  WeatherCity? get weatherCity => _weatherCity;
 
   WeatherStatus get status => _status;
 
   WeatherState copyWith({
     WeatherStatus? status,
-    WeatherCity? weather,
-    TextEditingController? cityController,
+    WeatherCity? weatherCity,
+    String? errorMessage,
   }) {
     return WeatherState(
       status: status ?? _status,
-      weather: weather ?? _weather,
+      weatherCity: weatherCity ?? _weatherCity,
+      errorMessage: errorMessage ?? _errorMessage,
     );
   }
 }
