@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/models/weatherCity.dart';
 import 'package:weather/repositories/today_repository.dart';
@@ -12,20 +13,29 @@ class WeatherCubit extends Cubit<WeatherState> {
         super(const WeatherState(status: WeatherStatus.initial));
 
   Future getWeather({required String city}) async {
-    try {
-      emit(state.copyWith(status: WeatherStatus.loading));
+    ConnectivityResult result = await Connectivity().checkConnectivity();
+    if (result != ConnectivityResult.none){
+      try {
+        emit(state.copyWith(status: WeatherStatus.loading));
 
-      final response = await _repository.fetch(city: city);
+        final response = await _repository.fetch(city: city);
 
-      emit(state.copyWith(status: WeatherStatus.loaded, weatherCity: response));
-    } catch (error) {
+        emit(state.copyWith(status: WeatherStatus.loaded, weatherCity: response));
+      } catch (error) {
+        emit(
+          state.copyWith(
+            status: WeatherStatus.errorServer,
+            errorMessage: error.toString(),
+          ),
+        );
+      }
+    } else {
       emit(
         state.copyWith(
           status: WeatherStatus.errorServer,
-          errorMessage: error.toString(),
+          errorMessage: "Нет подключения к интернету",
         ),
       );
-      // emit(state.copyWith(status: WeatherStatus.initial));
     }
   }
 }
