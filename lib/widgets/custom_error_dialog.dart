@@ -12,26 +12,11 @@ class CustomErrorDialog {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
+          title: const Text("Ошибка получения данных"),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.sms_failed,
-                    color: WeatherColors.red,
-                  ),
-                  const SizedBox(width: 5),
-                  Text(
-                    "Ошибка получения данных",
-                    style: WeatherTextStyle.title16bold(WeatherColors.black),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
               Text(
                 errorMessage,
                 style: WeatherTextStyle.title16bold(WeatherColors.red),
