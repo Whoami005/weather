@@ -20,7 +20,9 @@ class HomeScreen extends StatelessWidget {
           body: Stack(
             children: [
               Container(
-                padding: MediaQuery.of(context).viewInsets,
+                padding: MediaQuery.of(context).size.height < 750
+                    ? MediaQuery.of(context).viewInsets
+                    : EdgeInsets.zero,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/home.jpg"),

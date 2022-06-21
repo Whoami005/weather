@@ -12,16 +12,26 @@ class WeatherCubit extends Cubit<WeatherState> {
       : _repository = repository,
         super(const WeatherState(status: WeatherStatus.initial));
 
+  // getting weather information
   Future getWeather({required String city}) async {
+
+    //get information about internet connection
     ConnectivityResult internet = await Connectivity().checkConnectivity();
-    if (internet != ConnectivityResult.none){
+
+    // have a network connection
+    if (internet != ConnectivityResult.none) {
       try {
         emit(state.copyWith(status: WeatherStatus.loading));
 
-        final response = await _repository.fetch(city: city);
+        final response = await _repository.fetch(city: city); // database query
 
-        emit(state.copyWith(status: WeatherStatus.loaded, weatherCity: response));
-      } catch (error) {
+        emit(
+          state.copyWith(
+            status: WeatherStatus.loaded,
+            weatherCity: response,
+          ),
+        );
+      } catch (error) {  // server error
         emit(
           state.copyWith(
             status: WeatherStatus.errorServer,
@@ -29,7 +39,7 @@ class WeatherCubit extends Cubit<WeatherState> {
           ),
         );
       }
-    } else {
+    } else {  // no network connection
       emit(
         state.copyWith(
           status: WeatherStatus.errorServer,

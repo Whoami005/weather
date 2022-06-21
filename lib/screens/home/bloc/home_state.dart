@@ -1,5 +1,6 @@
 part of 'home_cubit.dart';
 
+// home screen states
 enum HomeStatus {
   initial,
   loading,
@@ -8,7 +9,7 @@ enum HomeStatus {
 
 class HomeState {
   final HomeStatus _status;
-  final TextEditingController _cityController;
+  final TextEditingController _cityController; // to get city name
 
   HomeState({
     required HomeStatus status,

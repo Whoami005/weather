@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/screens/weather/bloc/weather_cubit.dart';
 
+// checking the weather condition to show the desired icon
 class CustomIcon extends StatelessWidget {
   final WeatherState state;
 

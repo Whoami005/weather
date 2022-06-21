@@ -1,5 +1,6 @@
 part of 'weather_cubit.dart';
 
+// weather screen states
 enum WeatherStatus {
   initial,
   loading,
@@ -10,7 +11,7 @@ enum WeatherStatus {
 class WeatherState {
   final WeatherStatus _status;
   final WeatherCity? _weatherCity;
-  final String? _errorMessage;
+  final String? _errorMessage; // server error
 
   const WeatherState({
     required WeatherStatus status,

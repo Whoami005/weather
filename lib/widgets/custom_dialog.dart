@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:weather/theme/color.dart';
 import 'package:weather/theme/text_style.dart';
 
+//showDialog called on empty field
 class CustomDialog extends StatelessWidget {
   static void show({
     required BuildContext context,

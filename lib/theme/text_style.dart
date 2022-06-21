@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// text style used in the application
 class WeatherTextStyle {
   static TextStyle title25bold(Color color) {
     return TextStyle(

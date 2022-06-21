@@ -1,5 +1,6 @@
 part of 'days_info_cubit.dart';
 
+// days info screen states
 enum DaysInfoStatus {
   initial,
   loading,

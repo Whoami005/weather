@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// colors used in the application
 class WeatherColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);

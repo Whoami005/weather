@@ -11,9 +11,10 @@ class DaysInfoCubit extends Cubit<DaysInfoState> {
       : _repository = repository,
         super(const DaysInfoState(status: DaysInfoStatus.initial));
 
+  // getting weather information
   Future getInfo({required String city}) async {
     emit(state.copyWith(status: DaysInfoStatus.loading));
-    final response = await _repository.fetch(city: city);
+    final response = await _repository.fetch(city: city); // database query
     emit(state.copyWith(status: DaysInfoStatus.loaded, info: response));
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:weather/theme/color.dart';
 import 'package:weather/theme/text_style.dart';
 
+//showDialog called on error
 class CustomErrorDialog {
   static Future<void> show({
     required BuildContext context,
