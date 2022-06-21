@@ -1,16 +1,14 @@
 # weather
 
-A new Flutter project.
+This project shows the weather
 
-## Getting Started
+## This project used:
+- Dart
+- Flutter
+- http
+- flutter_bloc
+- auto_size_text
+- connectivity_plus
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Application video:
+https://user-images.githubusercontent.com/46159852/174858206-0565d765-717d-4829-ad20-046d894da373.mp4
