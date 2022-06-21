@@ -11,14 +11,16 @@ class TodayRepository {
       "http://api.openweathermap.org/data/2.5/"
       "weather?q=$city&lang=ru&units=metric&APPID=$_apiKey",
     );
-    final response = await http.get(url);
+    final response = await http.get(url); // database query
 
     if (response.statusCode == 200) {
       final resultJson = jsonDecode(response.body);
 
       return WeatherCity.fromJson(resultJson);
     } else {
+      //error processing
       final resultJson = jsonDecode(response.body) as Map<String, dynamic>;
+
       return throw Exception(resultJson.values.last);
     }
   }

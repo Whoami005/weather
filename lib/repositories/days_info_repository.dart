@@ -11,7 +11,7 @@ class DaysInfoRepository {
       "http://api.openweathermap.org/data/2.5/"
       "forecast?q=$city&lang=ru&units=metric&cnt=3&APPID=$_apiKey",
     );
-    final response = await http.get(url);
+    final response = await http.get(url); // database query
 
     if (response.statusCode == 200) {
       final resultJson = jsonDecode(response.body);
@@ -26,12 +26,10 @@ class DaysInfoRepository {
 
       return result;
     } else {
+      //error processing
       final resultJson = jsonDecode(response.body) as Map<String, dynamic>;
+
       return throw Exception(resultJson.values.last);
     }
   }
 }
-
-// res = requests.get("http://api.openweathermap.org/data/2.5/forecast",
-// params={'id': city_id, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
-// http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&dt={time}&lang=ru&units=metric&APPID=ae72b78a3620648f64652eaacc760dbe
