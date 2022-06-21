@@ -18,75 +18,65 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: const HomeAppBar(),
-          body: Scaffold(
-            resizeToAvoidBottomInset: false,
-            body: Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/home.jpg"),
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minWidth: MediaQuery.of(context).size.width,
-                        minHeight: MediaQuery.of(context).size.height,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                    color: WeatherColors.light, width: 5)),
-                            child: TextField(
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                  hintText: "Махачкала",
-                                  hintStyle: WeatherTextStyle.title18bold(
-                                    Colors.black87,
-                                  ),
-                                  border: InputBorder.none),
-                              style:
-                                  WeatherTextStyle.title18bold(Colors.black87),
-                              controller: state.cityController,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                if (state.cityController.text.isNotEmpty) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => WeatherScreen(
-                                        city: state.cityController.text,
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  CustomDialog.show(context: context);
-                                }
-                              },
-                              child: const Text("Поиск"),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+          body: Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/home.jpg"),
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
-              ],
-            ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                                color: WeatherColors.light, width: 5)),
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                              hintText: "Махачкала",
+                              hintStyle: WeatherTextStyle.title18bold(
+                                Colors.black87,
+                              ),
+                              border: InputBorder.none),
+                          style: WeatherTextStyle.title18bold(Colors.black87),
+                          controller: state.cityController,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (state.cityController.text.isNotEmpty) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => WeatherScreen(
+                                    city: state.cityController.text,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              CustomDialog.show(context: context);
+                            }
+                          },
+                          child: const Text("Поиск"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },

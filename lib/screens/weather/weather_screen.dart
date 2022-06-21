@@ -68,21 +68,6 @@ class WeatherScreen extends StatelessWidget {
                             style: WeatherTextStyle.title30(Colors.black),
                           ),
                           const SizedBox(height: 20),
-                          // Card(
-                          //   shape: RoundedRectangleBorder(
-                          //       borderRadius: BorderRadius.circular(10)),
-                          //   child: Padding(
-                          //     padding: const EdgeInsets.all(8.0),
-                          //     child: Text(
-                          //       "${state.weatherCity!.name!}, "
-                          //       "${state.weatherCity!.sys!.country!}",
-                          //       style: WeatherTextStyle.title25bold(
-                          //         WeatherColors.light,
-                          //       ),
-                          //       textAlign: TextAlign.center,
-                          //     ),
-                          //   ),
-                          // ),
                           Card(
                             child: Row(
                               children: [
