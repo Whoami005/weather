@@ -1,6 +1,6 @@
-# weather
+# Weather
 
-This project shows the weather
+This app shows the weather forecast
 
 ## This project used:
 - Dart
