@@ -2,8 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/repositories/today_repository.dart';
-import 'package:weather/screens/days_info/days_info_screen.dart';
 import 'package:weather/screens/weather/bloc/weather_cubit.dart';
+import 'package:weather/screens/weather/widgets/app_bar.dart';
 import 'package:weather/screens/weather/widgets/custom_icon.dart';
 import 'package:weather/screens/weather/widgets/info_card.dart';
 import 'package:weather/theme/color.dart';
@@ -40,27 +40,9 @@ class WeatherScreen extends StatelessWidget {
             }
             if (state.status == WeatherStatus.loaded) {
               return Scaffold(
-                appBar: AppBar(
-                  title: Text("${state.weatherCity!.name!}, "
-                      "${state.weatherCity!.sys!.country!}"),
-                  centerTitle: true,
-                  actions: [
-                    IconButton(
-                      iconSize: 60,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DaysInfoScreen(
-                              city: city,
-                            ),
-                          ),
-                        );
-                      },
-                      icon: Image.asset("assets/sunny.png"),
-                      splashRadius: 30,
-                    )
-                  ],
+                appBar: WeatherAppBar(
+                  weatherCity: state.weatherCity,
+                  city: city,
                 ),
                 body: SafeArea(
                   child: RefreshIndicator(
@@ -73,7 +55,7 @@ class WeatherScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomIcon(state: state),
+                          CustomIcon(weatherCity: state.weatherCity),
                           const SizedBox(height: 10),
                           Text(
                             state.weatherCity!.weather![0].main!,
