@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:weather/repositories/days_info_repository.dart';
 import 'package:weather/repositories/today_repository.dart';
 import 'package:weather/screens/home/bloc/home_cubit.dart';
@@ -7,7 +8,12 @@ import 'package:weather/screens/home/home_screen.dart';
 import 'package:weather/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (BuildContext context) => WeatherTheme(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<WeatherTheme>();
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
@@ -30,7 +37,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: lightTheme,
+          theme: theme.getTheme(),
           initialRoute: '/',
           routes: {
             '/': (context) => const HomeScreen(),

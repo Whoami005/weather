@@ -40,7 +40,8 @@ class HomeScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: WeatherColors.light,
+                            color:
+                                Theme.of(context).appBarTheme.backgroundColor!,
                             width: 5,
                           ),
                         ),

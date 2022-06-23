@@ -8,4 +8,5 @@ class WeatherColors {
   static const Color black87 = Colors.black87;
   static const Color light = Color(0xFF71A2B6);
   static const Color red = Colors.red;
+  static const Color blueGrey = Colors.blueGrey;
 }
